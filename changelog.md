@@ -9,8 +9,6 @@
 
 **280126**
 - Changed README to reflect project fit and use-cases.
-- `qtls_application.py` - Replaced the conditional KEM generator with ensure_kem_materials() so that client.kem.{key,pub,seed} and server.kem.{key,pub,seed} are always emitted. Enable_kem will now only control whether the certificate SPKI is overwritten via openssl x509 -force_pubkey for legacy/debug use cases.
-- `qtls_application.py` - Added optional detached binding sign_kem_pub_detached()) to produce <stem>.kem.pub.sig using the identity private key. Call it immediately after each ensure_kem_materials() invocation for server and client, giving an auditable link between the KEM public key and the signing identity.
 - `internal/config/config.go` - Introduced x509.* paths (root_cert_path, chain_path, client_cert_path, server_cert_path) plus openssl.conf_path, this separates identity material from protocol keys, and makes path resolution stable relative to the config file directory.
 - `internal/certinfo/verify_openssl.go` - Added OpenSSL-based chain verification (openssl verify) and peer public key extraction (openssl x509 -pubkey -noout) for PQ-signed chains in OpenSSL mode.
 
