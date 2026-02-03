@@ -16,7 +16,7 @@
 - `internal/osslutil/osslutil.go` - Added a small helper to inject OPENSSL_CONF into child process environments. This will ensure the OQS provider config is consistently applied when invoking OpenSSL CLI.
 - `cmd/client/main.go` - Updated certificate chain validation to use OpenSSL in mode: openssl (which is a prioritised direction); but retained Go crypto/x509 verification for non-OpenSSL operative modes. Keys are now loaded from cfg.Keys with peer signature public key derived from server.crt when sig_public_path is blank in OpenSSL mode.
 - `cmd/server/main.go` - Mirrored the client-side changes - OpenSSL-mode chain verification is used for both server and client certs, and the peer signature public key is now derived from client.crt when sig_public_path is blank.
-- `config/client.yaml` + `config/server.yaml` - Added explicit x509 and openssl sections consistent with the new structs. Default paths match your export layout (certs at certs_dir root; keys under certs_dir/openssl/).
+- `config/client.yaml` + `config/server.yaml` - Added explicit x509 and openssl sections consistent with the new structs. Default paths match export layout (certs at certs_dir root; keys under certs_dir/openssl/).
 - Added copyright disclaimer to program file headers.
 
 **300126**
